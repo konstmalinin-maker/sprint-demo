@@ -38,7 +38,7 @@ def test_create_task_strips_spaces():
     assert task["title"] == "Прочитать лекцию"
 
 
-@pytest.mark.parametrize("title", ["", "   "])
+@pytest.mark.parametrize("title", ["", "   ", "\t", "\n"])
 def test_create_task_empty_title(title):
     tasks = []
 
