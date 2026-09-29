@@ -1,11 +1,9 @@
 """Модуль аутентификации пользователей."""
 
 import hashlib
-from typing import Dict
-
 
 # Имитация хранилища пользователей.
-_users: Dict[str, str] = {}
+_users: dict[str, str] = {}
 
 
 def _hash_password(password: str) -> str:
