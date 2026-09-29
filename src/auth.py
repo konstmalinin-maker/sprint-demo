@@ -19,8 +19,9 @@ def register(email: str, password: str) -> bool:
     Raises:
         ValueError: если email некорректен, занят или пароль слишком короткий.
     """
-    if "@" not in email:
-        raise ValueError("Некорректный email")
+    parts = email.split("@")
+    if len(parts) != 2 or not all(part.strip() for part in parts):
+        	raise ValueError("Некорректный email")
     if len(password) < 8:
         raise ValueError("Пароль должен содержать минимум 8 символов")
     if email in _users:

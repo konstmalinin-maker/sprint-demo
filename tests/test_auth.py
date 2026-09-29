@@ -44,3 +44,11 @@ def test_login_wrong_password():
 
 def test_login_unknown_user():
     assert login("nobody@example.com", "anypassword") is False
+
+@pytest.mark.parametrize(
+    "email",
+    ["@example.com", "user@", "user@@example.com"],
+)
+def test_register_invalid_email_parts(email):
+    with pytest.raises(ValueError, match="Некорректный email"):
+        register(email, "securepass123")
