@@ -2,7 +2,7 @@
 
 [![PR checks](https://github.com/konstmalinin-maker/sprint-demo/actions/workflows/pr-check.yml/badge.svg?branch=main)](https://github.com/konstmalinin-maker/sprint-demo/actions/workflows/pr-check.yml)
 
-Учебный проект для имитации Scrum-спринта. Реализованы регистрация и вход, создание и просмотр задач, фильтрация по статусу и статистика. Все данные хранятся в памяти. Требуется Python 3.12.
+Учебный проект для имитации Scrum-спринта. Реализованы регистрация и вход, создание, просмотр и завершение задач, фильтрация, статистика и сводка выполнения. Пароли защищены PBKDF2 с индивидуальной солью. Все данные хранятся в памяти. Требуется Python 3.12.
 
 ## Запуск проверок
 
@@ -16,7 +16,7 @@ python -m ruff check src tests
 python -m pytest -v --cov=src --cov-report=term-missing
 ```
 
-Результат проверки 16.11.2026: 28 тестов проходят, покрытие строк — 100% (36 из 36), Ruff без замечаний. Покрытие строк не гарантирует отсутствие всех ошибок. Пустые модули goals, reminders и workouts — заготовки.
+Результат проверки 16.11.2026: 36 тестов проходят, покрытие строк — 100% (52 из 52), Ruff без замечаний. Покрытие строк не гарантирует отсутствие всех ошибок. Пустые модули goals, reminders и workouts — заготовки.
 
 ## Пример использования
 
@@ -49,3 +49,23 @@ print(task_stats(tasks))  # {'total': 2, 'completed': 1, 'pending': 1}
 - [CODEOWNERS, PR #16](https://github.com/konstmalinin-maker/sprint-demo/pull/16).
 
 Работа выполнена индивидуально Малининым Константином Николаевичем. Самопроверка не заменяет независимое ревью. Файл CODEOWNERS добавлен; обязательное одобрение Code Owner не подтверждено, задание C выполнено частично. Для выполнения командных требований нужны другие участники.
+
+## Все дополнительные задания
+
+- A: интерактивный rebase — PR #14.
+- B: обязательный CI — PR #15, история падения и исправления сохранена.
+- C: CODEOWNERS актуализирован; независимое ревью пропущено в индивидуальном формате, настройка обязательного одобрения через API недоступна.
+- D: [hotfix PR #22](https://github.com/konstmalinin-maker/sprint-demo/pull/22), [релиз v0.1.1](https://github.com/konstmalinin-maker/sprint-demo/releases/tag/v0.1.1), перенос в sprint-1 через PR #23.
+- E: [метрики, методика и диаграммы](docs/metrics/README.md), [Excel](docs/metrics/sprint-metrics.xlsx).
+- F: Issue #21 с blocked, предшественник PR #24 и зависимая реализация PR #25.
+
+Для повторного экспорта метрик:
+
+```sh
+python -m pip install -r requirements-report.txt
+python scripts/export_sprint_metrics.py
+# По сохранённым данным без GitHub:
+python scripts/export_sprint_metrics.py --offline
+```
+
+Данные доступа к GitHub берутся из авторизации `gh`, в файлы проекта не записываются.

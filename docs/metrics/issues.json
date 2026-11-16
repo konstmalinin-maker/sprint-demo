@@ -1,0 +1,74 @@
+[
+  {
+    "number": 21,
+    "title": "[F: blocked] Complete a task and return updated statistics",
+    "html_url": "https://github.com/konstmalinin-maker/sprint-demo/issues/21",
+    "created_at": "2026-11-16T11:14:53Z",
+    "closed_at": "2026-11-16T11:22:38Z",
+    "state": "closed"
+  },
+  {
+    "number": 20,
+    "title": "[F: prerequisite] Add task completion operation",
+    "html_url": "https://github.com/konstmalinin-maker/sprint-demo/issues/20",
+    "created_at": "2026-11-16T11:14:31Z",
+    "closed_at": "2026-11-16T11:20:50Z",
+    "state": "closed"
+  },
+  {
+    "number": 19,
+    "title": "[Hotfix D] Replace unsalted password hashing with PBKDF2",
+    "html_url": "https://github.com/konstmalinin-maker/sprint-demo/issues/19",
+    "created_at": "2026-11-16T11:14:13Z",
+    "closed_at": "2026-11-16T11:16:25Z",
+    "state": "closed"
+  },
+  {
+    "number": 9,
+    "title": "Статистика задач",
+    "html_url": "https://github.com/konstmalinin-maker/sprint-demo/issues/9",
+    "created_at": "2026-09-29T12:45:31Z",
+    "closed_at": "2026-11-16T11:19:32Z",
+    "state": "closed"
+  },
+  {
+    "number": 8,
+    "title": "Фильтрация задач по статусу",
+    "html_url": "https://github.com/konstmalinin-maker/sprint-demo/issues/8",
+    "created_at": "2026-09-29T12:45:19Z",
+    "closed_at": "2026-11-16T11:19:44Z",
+    "state": "closed"
+  },
+  {
+    "number": 6,
+    "title": "Создание задачи",
+    "html_url": "https://github.com/konstmalinin-maker/sprint-demo/issues/6",
+    "created_at": "2026-09-29T12:41:15Z",
+    "closed_at": "2026-11-16T11:19:57Z",
+    "state": "closed"
+  },
+  {
+    "number": 4,
+    "title": "Просмотр списка задач",
+    "html_url": "https://github.com/konstmalinin-maker/sprint-demo/issues/4",
+    "created_at": "2026-09-29T09:29:33Z",
+    "closed_at": "2026-11-16T11:19:51Z",
+    "state": "closed"
+  },
+  {
+    "number": 3,
+    "title": "Регистрация и вход пользователя",
+    "html_url": "https://github.com/konstmalinin-maker/sprint-demo/issues/3",
+    "created_at": "2026-09-29T09:18:02Z",
+    "closed_at": "2026-11-16T11:19:15Z",
+    "state": "closed"
+  },
+  {
+    "number": 1,
+    "title": "[US-01] Регистрация и вход по email",
+    "html_url": "https://github.com/konstmalinin-maker/sprint-demo/issues/1",
+    "created_at": "2026-09-29T08:45:53Z",
+    "closed_at": "2026-11-16T11:19:38Z",
+    "state": "closed"
+  }
+]
