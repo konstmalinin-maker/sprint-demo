@@ -2,7 +2,7 @@
 
 import pytest
 
-from src.auth import register, login, reset_users
+from src.auth import login, register, reset_users
 
 
 @pytest.fixture(autouse=True)
