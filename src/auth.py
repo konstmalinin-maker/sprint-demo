@@ -1,14 +1,17 @@
 """Модуль аутентификации пользователей."""
 
 import hashlib
+import hmac
+import secrets
 
 # Имитация хранилища пользователей.
-_users: dict[str, str] = {}
+_ITERATIONS = 600_000
+_users: dict[str, tuple[bytes, bytes]] = {}
 
 
-def _hash_password(password: str) -> str:
-    """Возвращает хэш пароля (упрощённо, для учебных целей)."""
-    return hashlib.sha256(password.encode()).hexdigest()
+def _hash_password(password: str, salt: bytes) -> bytes:
+    """Получает ключ PBKDF2 с индивидуальной солью пользователя."""
+    return hashlib.pbkdf2_hmac("sha256", password.encode(), salt, _ITERATIONS)
 
 
 def register(email: str, password: str) -> bool:
@@ -19,13 +22,14 @@ def register(email: str, password: str) -> bool:
     """
     parts = email.split("@")
     if len(parts) != 2 or not all(part.strip() for part in parts):
-        	raise ValueError("Некорректный email")
+        raise ValueError("Некорректный email")
     if len(password) < 8:
         raise ValueError("Пароль должен содержать минимум 8 символов")
     if email in _users:
         raise ValueError("Пользователь с таким email уже существует")
 
-    _users[email] = _hash_password(password)
+    salt = secrets.token_bytes(16)
+    _users[email] = (salt, _hash_password(password, salt))
     return True
 
 
@@ -33,7 +37,8 @@ def login(email: str, password: str) -> bool:
     """Возвращает True, если email и пароль совпадают."""
     if email not in _users:
         return False
-    return _users[email] == _hash_password(password)
+    salt, expected = _users[email]
+    return hmac.compare_digest(expected, _hash_password(password, salt))
 
 
 def reset_users() -> None:
