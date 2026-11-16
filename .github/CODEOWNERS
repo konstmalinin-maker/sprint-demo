@@ -1,0 +1,9 @@
+# Индивидуальная работа: все модули принадлежат одному исполнителю.
+
+/src/auth.py       @konstmalinin-maker
+/src/tasks.py      @konstmalinin-maker
+/src/filters.py    @konstmalinin-maker
+/src/stats.py      @konstmalinin-maker
+/tests/            @konstmalinin-maker
+*.md               @konstmalinin-maker
+/.github/          @konstmalinin-maker
