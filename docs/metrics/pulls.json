@@ -1,0 +1,146 @@
+[
+  {
+    "number": 25,
+    "title": "feat(tasks): complete blocked task after prerequisite merge",
+    "html_url": "https://github.com/konstmalinin-maker/sprint-demo/pull/25",
+    "created_at": "2026-11-16T11:21:31Z",
+    "merged_at": "2026-11-16T11:22:30Z",
+    "body": "Closes #21.\n\nДополнительное задание F: зависимая реализация начата после слияния предшественника #24 и снятия blocked с #21. Выбран способ устранения блокировки — изменение порядка работы, без заглушек и парного программирования.\n\nДобавлена complete_and_summarize: вызывает complete_task из #20, возвращает снимок задачи и актуальную статистику. Добавлены интеграционные тесты успешного выполнения, стабильности снимка и неизвестного ID без побочных изменений.\n\nПроверка: 36 passed, покрытие 52/52 строки (100%), Ruff без замечаний. История Issue #21 содержит labeled blocked и unlabeled blocked. Работа индивидуальная.",
+    "merge_commit_sha": "b1f8fc783e92fd950cbc8a0fdc2f13f2e61af474"
+  },
+  {
+    "number": 24,
+    "title": "feat(tasks): add task completion prerequisite for blocked work",
+    "html_url": "https://github.com/konstmalinin-maker/sprint-demo/pull/24",
+    "created_at": "2026-11-16T11:19:01Z",
+    "merged_at": "2026-11-16T11:20:16Z",
+    "body": "Closes #20.\n\nЗадание F, задача-предшественник: добавлена complete_task(tasks, task_id). Функция меняет статус только выбранной задачи, повторное выполнение безопасно, неизвестный ID вызывает KeyError без изменения списка.\n\nПроверка: 4 новых теста проходят, Ruff без замечаний. После CI и слияния можно снять blocked с #21 и только затем начать реализацию зависимой функции. Сейчас #21 не реализована.",
+    "merge_commit_sha": "d1b74ab32701a08e9733ad03d111656f348fd43f"
+  },
+  {
+    "number": 23,
+    "title": "chore: backport security hotfix v0.1.1 into sprint-1",
+    "html_url": "https://github.com/konstmalinin-maker/sprint-demo/pull/23",
+    "created_at": "2026-11-16T11:16:47Z",
+    "merged_at": "2026-11-16T11:18:26Z",
+    "body": "Дополнительное задание D: синхронизация main → sprint-1 после объединения hotfix/security-patch (#22) и выпуска v0.1.1.\n\nПереносятся исправление хранения паролей PBKDF2 и регрессионный тест. Объединение обычным merge сохраняет происхождение исправления в main. Ожидаемые проверки: Ruff, 29 тестов, покрытие строк 100%.",
+    "merge_commit_sha": "bbe927e1eca07743873c4d501993ff723611a5ef"
+  },
+  {
+    "number": 22,
+    "title": "fix(auth): replace unsalted SHA-256 with salted PBKDF2",
+    "html_url": "https://github.com/konstmalinin-maker/sprint-demo/pull/22",
+    "created_at": "2026-11-16T11:15:35Z",
+    "merged_at": "2026-11-16T11:16:23Z",
+    "body": "Closes #19.\n\nСрочное исправление после релиза v0.1.0 (дополнительное задание D). Одинаковые пароли больше не имеют одинаковых записей в хранилище: используется PBKDF2-HMAC-SHA256, 600 000 итераций и индивидуальная случайная 16-байтная соль. Сравнение ключей выполняется через hmac.compare_digest. Публичные register/login и поведение ошибок сохраняются; хранилище учебное, в памяти.\n\nРегрессионный тест воспроизводит исходную проблему и проходит после исправления. Логи до/после сохранены в docs/evidence/hotfix-before.txt и hotfix-after.txt. Проверка: 29 passed, покрытие строк 100%, Ruff без замечаний.\n\nПосле успешного CI и слияния будет создан релиз v0.1.1, затем main синхронизируется с sprint-1. Независимое ревью пропускается по согласованному индивидуальному формату.",
+    "merge_commit_sha": "57844eb6d2b2ad39c10f26b74b74ba3bdb51b3d7"
+  },
+  {
+    "number": 18,
+    "title": "docs: complete practical work 4 report and verification instructions",
+    "html_url": "https://github.com/konstmalinin-maker/sprint-demo/pull/18",
+    "created_at": "2026-11-16T11:09:02Z",
+    "merged_at": "2026-11-16T11:10:03Z",
+    "body": "Дополнен отчёт PR4_Отчёт_Малинин.md: роли и распределение функций, ссылки на Issues и пять feature-PR, Sprint Goal и DoD, объяснение разрешённого конфликта, протоколы Review и Retro, задания A и B, частичный результат C, ответы на 10 вопросов и трудности с решениями. Сохранены все 27 исходных скриншотов. README дополнен инструкциями запуска и примером использования.\n\nВ ветку также включены ранее добавленные в main протоколы из #13, чтобы синхронизировать ветку спринта перед #17.\n\nПроверка: все ссылки на локальные изображения разрешаются; DOCX прочитан обратно — 27 изображений и 7 таблиц. Ruff и 28 тестов проверены на исходном коде #15; покрытие строк 100%. Последующие изменения касаются CODEOWNERS и документации.\n\nОграничения индивидуального формата, отсутствие независимого ревью и неподтверждённое обязательное одобрение Code Owner явно указаны в отчёте.",
+    "merge_commit_sha": "ba743320b15e3258e3b0a6c32f333b8f7bf5a95d"
+  },
+  {
+    "number": 17,
+    "title": "docs: finish practical work 4 with report, CI and CODEOWNERS",
+    "html_url": "https://github.com/konstmalinin-maker/sprint-demo/pull/17",
+    "created_at": "2026-11-16T11:04:34Z",
+    "merged_at": "2026-11-16T11:10:56Z",
+    "body": "Завершение практической работы №4: в main переносится полный Markdown-отчёт с 27 исходными скриншотами, ответами на 10 контрольных вопросов, протоколами Sprint Review и Retrospective, а также инструкциями запуска в README.\n\nВключены дополнительные задания: интерактивный rebase (#14), GitHub Actions с Ruff, pytest и комментарием о покрытии (#15), файл CODEOWNERS (#16), отчёт и синхронизация протоколов (#18). Тег v0.1.0 сохраняет исходный выпуск MVP.\n\nПроверка: Python 3.12, 28 тестов проходят, покрытие строк 36/36 (100%), Ruff без замечаний. В истории #15 сохранены намеренно неуспешный запуск CI и успешный запуск после удаления падающего теста. Ветки main и sprint-1 защищены, обязательный lint-and-tests проверен фактической блокировкой слияния. Все ссылки на изображения в отчёте разрешаются, DOCX прочитан обратно: 27 изображений, 7 таблиц и 12 основных разделов.\n\nРабота индивидуальная: самопроверка не заменяет независимое ревью. Обязательное одобрение Code Owner не подтверждено; задание C описано как частичное. Два полностью выполненных дополнительных задания — A и B.",
+    "merge_commit_sha": "9997ed1b1fd90e4cd134cd2bc39d81a06638afc3"
+  },
+  {
+    "number": 16,
+    "title": "chore: add CODEOWNERS",
+    "html_url": "https://github.com/konstmalinin-maker/sprint-demo/pull/16",
+    "created_at": "2026-09-29T13:28:32Z",
+    "merged_at": "2026-11-16T11:04:13Z",
+    "body": "Задание C: назначены владельцы модулей, тестов, документации и настроек GitHub. При индивидуальном выполнении владельцем всех файлов является автор проекта.",
+    "merge_commit_sha": "a6c79959b7b61ce8374813b352a7723f4e144dbb"
+  },
+  {
+    "number": 15,
+    "title": "ci: add automated PR checks",
+    "html_url": "https://github.com/konstmalinin-maker/sprint-demo/pull/15",
+    "created_at": "2026-09-29T13:21:05Z",
+    "merged_at": "2026-11-16T11:02:58Z",
+    "body": "Дополнительное задание B.\r\n\r\nДобавлены:\r\n- установка зависимостей;\r\n- проверка кода Ruff;\r\n- запуск pytest с измерением покрытия;\r\n- автоматический комментарий с покрытием в PR;\r\n- бейдж CI в README.\r\n\r\nЛокально: 28 тестов проходят, покрытие строк — 100%.\r\nИсправлены замечания Ruff к импортам и аннотациям типов.",
+    "merge_commit_sha": "3e5cfe3770d0b7a166d1abf12590267b89f66dbe"
+  },
+  {
+    "number": 14,
+    "title": "docs: document interactive rebase practice",
+    "html_url": "https://github.com/konstmalinin-maker/sprint-demo/pull/14",
+    "created_at": "2026-09-29T13:12:05Z",
+    "merged_at": "2026-09-29T13:15:23Z",
+    "body": "Дополнительное задание A: объединение пяти промежуточных коммитов в один осмысленный с помощью интерактивного rebase.",
+    "merge_commit_sha": "0346b1519173d9b040d4c6b9740037e38dec3870"
+  },
+  {
+    "number": 13,
+    "title": "docs: add sprint review and retrospective",
+    "html_url": "https://github.com/konstmalinin-maker/sprint-demo/pull/13",
+    "created_at": "2026-09-29T13:09:29Z",
+    "merged_at": "2026-09-29T13:09:42Z",
+    "body": "Добавлены протокол демонстрации результатов спринта и ретроспектива Start / Stop / Continue",
+    "merge_commit_sha": "dd314d587ed74f4ba27ac76cc17c30bb5ae07cdc"
+  },
+  {
+    "number": 12,
+    "title": "release: sprint-1 MVP",
+    "html_url": "https://github.com/konstmalinin-maker/sprint-demo/pull/12",
+    "created_at": "2026-09-29T13:03:53Z",
+    "merged_at": "2026-09-29T13:04:15Z",
+    "body": "## Sprint 1: MVP менеджера задач\r\n\r\n## Что вошло в релиз\r\n- Регистрация и вход пользователя.\r\n- Просмотр списка задач.\r\n- Создание задач.\r\n- Фильтрация задач по статусу выполнения.\r\n- Статистика задач.\r\n\r\nВсе функции реализовал Малинин Константин Николаевич.\r\n\r\n## Проверка\r\nКоманда: py -m pytest -v\r\nРезультат: 28 passed.\r\n<img width=\"1114\" height=\"642\" alt=\"image\" src=\"https://github.com/user-attachments/assets/de6d479f-ba6e-4ba8-9a49-8fa76781163e\" />\r\n\r\nПри интеграции разрешён конфликт в src/tasks.py:\r\nсохранены функции создания и просмотра задач.\r\n\r\n## Sprint Goal\r\nДостигнут: базовые функции менеджера задач реализованы,\r\nвсе автоматические тесты проходят.\r\n\r\n## Definition of Done\r\n- [x] Код реализован и запускается локально.\r\n- [x] Для каждой функции добавлены тесты.\r\n- [x] Выполнена самопроверка с комментариями и ответами в PR.\r\n- [x] Все пять feature-PR объединены с sprint-1.\r\n\r\nРабота выполнена индивидуально.\r\nНезависимое ревью заменено самопроверкой.",
+    "merge_commit_sha": "07ef3067377e9d4605a29fd3490df35594bf93ee"
+  },
+  {
+    "number": 11,
+    "title": "feat(tasks): add task statistics",
+    "html_url": "https://github.com/konstmalinin-maker/sprint-demo/pull/11",
+    "created_at": "2026-09-29T12:47:21Z",
+    "merged_at": "2026-09-29T13:01:06Z",
+    "body": "## Что сделано\r\n- Реализована функция task_stats в src/stats.py.\r\n- Подсчитываются все, выполненные и невыполненные задачи.\r\n- Добавлены 4 теста: смешанный список, пустой список,\r\n  все задачи выполнены, все задачи не выполнены.\r\n\r\n## Как проверить\r\npy -m pytest tests/test_task_stats.py -v\r\n\r\nОжидаемый результат: 4 passed.\r\n\r\n## Скриншоты\r\nПрилагается скриншот успешного запуска тестов.\r\n\r\n## Связанные Issues\r\nCloses #9 \r\n\r\n## Тип изменений\r\n- [x] Новая функциональность (feature)\r\n- [ ] Исправление бага (bugfix)\r\n- [ ] Рефакторинг\r\n- [ ] Документация\r\n\r\n## Чек-лист автора\r\n- [x] Код написан и работает локально\r\n- [x] Добавлены тесты\r\n- [ ] Пройден линтер\r\n- [ ] Обновлена документация (если нужно)\r\n\r\n## Формат проверки\r\nИндивидуальная работа, самопроверка кода.",
+    "merge_commit_sha": "c022cc6845a08108946845d8e8cf19eae8d2418a"
+  },
+  {
+    "number": 10,
+    "title": "feat(tasks): add task filtering by completion status",
+    "html_url": "https://github.com/konstmalinin-maker/sprint-demo/pull/10",
+    "created_at": "2026-09-29T12:46:38Z",
+    "merged_at": "2026-09-29T13:00:35Z",
+    "body": "## Что сделано\r\n- Реализована функция filter_tasks в src/filters.py.\r\n- Добавлена фильтрация выполненных и невыполненных задач.\r\n- Добавлены 4 теста, включая пустой список и отсутствие совпадений.\r\n\r\n## Как проверить\r\npy -m pytest tests/test_task_filter.py -v\r\n\r\nОжидаемый результат: 4 passed.\r\n\r\n## Скриншоты\r\nПрилагается скриншот успешного запуска тестов.\r\n\r\n## Связанные Issues\r\nCloses #8 \r\n\r\n## Тип изменений\r\n- [x] Новая функциональность (feature)\r\n- [ ] Исправление бага (bugfix)\r\n- [ ] Рефакторинг\r\n- [ ] Документация\r\n\r\n## Чек-лист автора\r\n- [x] Код написан и работает локально\r\n- [x] Добавлены тесты\r\n- [ ] Пройден линтер\r\n- [ ] Обновлена документация (если нужно)\r\n\r\n## Формат проверки\r\nИндивидуальная работа, самопроверка кода.",
+    "merge_commit_sha": "c714b56b1436a7419695021763d3b953395cb07d"
+  },
+  {
+    "number": 7,
+    "title": "feat(tasks): add task creation",
+    "html_url": "https://github.com/konstmalinin-maker/sprint-demo/pull/7",
+    "created_at": "2026-09-29T12:42:13Z",
+    "merged_at": "2026-09-29T12:59:42Z",
+    "body": "## Что сделано\r\n- Реализована функция create_task в src/tasks.py.\r\n- ID формируется на основе максимального ID в текущем списке.\r\n- Добавлены удаление пробелов по краям названия и проверка пустого названия.\r\n- Новая задача получает статус completed=False.\r\n- Добавлены автоматические тесты.\r\n\r\n## Как проверить\r\npy -m pytest tests/test_task_create.py -v\r\n\r\nОжидаемый результат: 5 passed.\r\n\r\n## Скриншоты\r\n<img width=\"1107\" height=\"370\" alt=\"image\" src=\"https://github.com/user-attachments/assets/b3829ec1-907e-4233-b38d-74997921ef5f\" />\r\n\r\n## Связанные Issues\r\nCloses #6\r\n\r\n## Тип изменений\r\n- [x] Новая функциональность (feature)\r\n- [ ] Исправление бага (bugfix)\r\n- [ ] Рефакторинг\r\n- [ ] Документация\r\n\r\n## Чек-лист автора\r\n- [x] Код написан и работает локально\r\n- [x] Добавлены тесты\r\n- [ ] Пройден линтер\r\n- [ ] Обновлена документация (если нужно)\r\n\r\n## Формат проверки\r\nИндивидуальная работа, самопроверка кода.",
+    "merge_commit_sha": "e4fb50caacdfd23bbda43a28b42131188bea0f6b"
+  },
+  {
+    "number": 5,
+    "title": "feat(tasks): add task listing",
+    "html_url": "https://github.com/konstmalinin-maker/sprint-demo/pull/5",
+    "created_at": "2026-09-29T09:30:20Z",
+    "merged_at": "2026-09-29T12:51:31Z",
+    "body": "## Что сделано\r\n- Реализована функция list_tasks в src/tasks.py.\r\n- Функция возвращает копию списка задач.\r\n- Добавлены тесты обычного и пустого списка.\r\n\r\n## Как проверить\r\npy -m pytest tests/test_task_list.py -v\r\n\r\nОжидаемый результат: 2 passed.\r\n\r\n## Скриншоты\r\nПрилагается скриншот успешного запуска тестов.\r\n\r\n## Связанные Issues\r\nCloses #4\r\n\r\n## Тип изменений\r\n- [x] Новая функциональность (feature)\r\n- [ ] Исправление бага (bugfix)\r\n- [ ] Рефакторинг\r\n- [ ] Документация\r\n\r\n## Чек-лист автора\r\n- [x] Код написан и работает локально\r\n- [x] Добавлены тесты\r\n- [ ] Пройден линтер\r\n- [ ] Обновлена документация (если нужно)\r\n\r\n## Формат проверки\r\nИндивидуальная работа, самопроверка кода.",
+    "merge_commit_sha": "db0769b9db4cc84db555117fcc4fa54a1ab5f6f4"
+  },
+  {
+    "number": 2,
+    "title": "feat(auth): user registration and login",
+    "html_url": "https://github.com/konstmalinin-maker/sprint-demo/pull/2",
+    "created_at": "2026-09-29T08:48:12Z",
+    "merged_at": "2026-09-29T12:50:49Z",
+    "body": "## Что сделано\r\n\r\n- Реализованы функции `register` и `login` в `src/auth.py`.\r\n- Добавлены unit-тесты для регистрации и входа.\r\n- Обработаны ошибки: некорректный email, короткий пароль, повторная регистрация.\r\n\r\n## Как проверить\r\n\r\nЗапустить тесты:\r\n\r\n`py -m pytest tests/test_auth.py -v`\r\n\r\n## Связанные Issues\r\n\r\nCloses #1\r\n\r\n## Тип изменений\r\n\r\n- [x] Новая функциональность (feature)\r\n- [ ] Исправление бага (bugfix)\r\n- [ ] Рефакторинг\r\n- [ ] Документация\r\n\r\n## Чек-лист автора\r\n\r\n- [x] Код написан и работает локально.\r\n- [x] Добавлены тесты.\r\n- [x] Изменения выполнены в feature-ветке.\r\n- [x] PR направлен в `sprint-1`.",
+    "merge_commit_sha": "424f67e4aa9e73397fbcda6c1daa3bc49e8fc113"
+  }
+]

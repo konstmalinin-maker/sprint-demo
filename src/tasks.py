@@ -24,3 +24,11 @@ def create_task(tasks: list[dict], title: str) -> dict:
     }
     tasks.append(task)
     return task
+
+def complete_task(tasks: list[dict], task_id: int) -> dict:
+    """Отмечает задачу выполненной; неизвестный ID вызывает KeyError."""
+    for task in tasks:
+        if task["id"] == task_id:
+            task["completed"] = True
+            return task
+    raise KeyError(task_id)
