@@ -1,0 +1,16 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+______________ test_equal_passwords_have_distinct_salted_records _______________
+
+    def test_equal_passwords_have_distinct_salted_records():
+        auth.reset_users()
+        try:
+            auth.register("alice@example.com", "same-password")
+            auth.register("bob@example.com", "same-password")
+>           assert auth._users["alice@example.com"] != auth._users["bob@example.com"]
+E           AssertionError: assert 'c610a28bf1105e347ce17736bd9bd19201f027f79d339f01e0cd01d86f8fb74e' != 'c610a28bf1105e347ce17736bd9bd19201f027f79d339f01e0cd01d86f8fb74e'
+
+tests/test_auth_security.py:11: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_auth_security.py::test_equal_passwords_have_distinct_salted_records
+1 failed in 0.02s
